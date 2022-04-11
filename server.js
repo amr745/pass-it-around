@@ -3,28 +3,18 @@ const express = require("express");
 const app = express()
 const port = 3000
 
-// const zeroHome = <a href="https://localhost3000/">start over</a>;
-// let lessBeer = <a href = "https://localhost3000/i">take one down, pass it around</a>;
-
 app.get("/", (req,res) => {
-    for (let i = 99; i > 0; i--) {
-        if(i == 99) {
-            res.send(`${i} Bottles of beer on the wall`)
+    for (let i = 99; i >= 0; i--) {
+        // console.log(i)
+        if (i == 0) {
+        res.send(`<a href=${"http://localhost:3000/"}>start over</a>`)
+        // console.log(`<a href=${"https://localhost3000/"}>start over</a>`)
+    } else {
+        const count = i-1
+        res.send(`${i} Bottles of beer on the wall <a href=${"http://localhost:3000/"}>take one down pass it around<a>`)
         }
     }
 });
-    
-    
-    
-    //     if (i == 0) {
-    //         // res.send(zeroHome)
-    //         res.send("stuff")
-    //     } else {
-    //             // res.send(lessBeer)
-    //             res.send("more stuff")
-    //         }
-    //     }
-    // });
 
 app.listen(port, () => {
     console.log("listening on port", port)
